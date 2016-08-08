@@ -1,5 +1,6 @@
 class PeopleController < ApplicationController
   # before_action :set_person, only: [:show, :edit, :update, :destroy]
+  include ApplicationHelper
 
   # GET /people
   def index
@@ -13,11 +14,11 @@ class PeopleController < ApplicationController
   # POST /people
   def create
     if params[:file]
-      return redirect_to new_building_path, notice: "Vous devez importés un fichier au format csv."  unless file_extension(params[:file])
+      return redirect_to new_person_path, notice: "Vous devez importés un fichier au format csv."  unless file_extension(params[:file])
       Person.import(Person, params[:file])
       redirect_to root_path, notice: 'Les personnes sont bien importées.' and return
     else
-      redirect_to new_building_path, notice: "Vous n'avez pas aucun fichier à uploader." and return
+      redirect_to new_person_path, notice: "Vous n'avez pas aucun fichier à uploader." and return
     end
   end
 

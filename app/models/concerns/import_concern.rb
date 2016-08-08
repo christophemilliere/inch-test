@@ -19,7 +19,7 @@ module ImportConcern
       person = Person.where('firstname = ? AND lastname = ?', hash["firstname"], hash["lastname"])
       if person.present?
         if hash["email"] != person.first.email
-          person.update_all(person_hash)
+          person.update_all(hash)
         end
       else
         Person.create!(hash) unless person.nil?
