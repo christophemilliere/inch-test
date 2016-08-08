@@ -1,0 +1,58 @@
+%h1 Home
+%div
+  = link_to 'Importer vos building', new_building_path
+  - if @buildings.present?
+    %table
+      %tr
+        %td
+          reference
+        %td
+          address
+        %td
+          zip_code
+        %td
+          city
+        %td
+          country
+        %td
+          manager_name
+
+        - @buildings.each do |p|
+          %tr
+            %td= p.reference
+            %td= p.address
+            %td= p.zip_code
+            %td= p.city
+            %td= p.country
+            %td= p.manager_name
+
+%div
+  = link_to 'Importer vos les personnes', new_person_path
+
+  - if @people.present?
+    %table
+      %tr
+        %td
+          reference
+        %td
+          firstname
+        %td
+          lastname
+        %td
+          home_phone_number
+        %td
+          mobile_phone_number
+        %td
+          email
+        %td
+          address
+
+        - @people.each do |p|
+          %tr
+            %td= p.reference
+            %td= p.firstname
+            %td= p.lastname
+            %td= p.home_phone_number
+            %td= p.mobile_phone_number
+            %td= p.email
+            %td= p.address
